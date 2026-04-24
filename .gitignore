@@ -1,0 +1,13 @@
+# Per-device Obsidian state
+.obsidian/workspace*.json
+.obsidian/workspace.json.bak
+.obsidian/cache
+.obsidian/graph.json
+
+# macOS
+.DS_Store
+*.icloud
+
+# Editor scratch
+*.swp
+*~
