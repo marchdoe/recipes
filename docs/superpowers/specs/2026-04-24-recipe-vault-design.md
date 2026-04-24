@@ -42,7 +42,7 @@ A single directory simultaneously serves as:
 2. A **git repository** (`.git/` inside, remote on GitHub private repo)
 3. An **iCloud Drive folder** (synced to Alisa's iPhone via Obsidian mobile)
 
-**Canonical path:** `~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Recipes/` (in iCloud Drive — required for the iCloud-based sync to Alisa's phone). The vault must live under `iCloud Drive/Obsidian/<vault-name>/` because Obsidian iOS only detects vaults at that specific path. For convenience, a symlink at `~/Projects/recipes/` points to the canonical iCloud location, so terminal/Claude Code workflows use the familiar Projects path.
+**Canonical path:** `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Recipes/` — this is the special **Obsidian iCloud container** (created by the Obsidian app itself), NOT a regular folder under `iCloud Drive/`. In Finder, it appears as "Obsidian" with the app's purple logo (distinct from any folder named "Obsidian" you might create yourself). Obsidian iOS only detects vaults stored in this container. For convenience, a symlink at `~/Projects/recipes/` points to the canonical container path, so terminal/Claude Code workflows use the familiar Projects path.
 
 The current empty `/Users/dougmarch/Projects/recipes/` directory will be removed and replaced with this symlink during initial setup.
 
@@ -502,7 +502,7 @@ Initial questions:
 
 ### 10.1 Phase 1 — iCloud single-vault (now)
 
-- Canonical vault location: `~/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Recipes/` (the `Obsidian/` parent is required by iOS Obsidian)
+- Canonical vault location: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Recipes/` (the Obsidian-app iCloud container, NOT a generic folder in iCloud Drive — Obsidian iOS only detects vaults in this container)
 - Symlink for convenience: `~/Projects/recipes/` → canonical iCloud path
 - "Keep Downloaded" enabled on the folder (Finder → right-click → Keep Downloaded)
 - `.gitignore` excludes per-device Obsidian state files
@@ -577,4 +577,4 @@ Total monthly Phase 2: ~$9–11.
 ## 16. Revision history
 
 - 2026-04-24: Initial spec from brainstorming session (Doug + Claude)
-- 2026-04-24 (later): Canonical vault path moved from `iCloud Drive/Recipes/` to `iCloud Drive/Obsidian/Recipes/` after discovering Obsidian iOS only detects vaults stored under `iCloud Drive/Obsidian/`. Symlink at `~/Projects/recipes` updated to point to new location. Git, GitHub repo, Sunday Action all unaffected (cloud doesn't care about local paths).
+- 2026-04-24 (later): Canonical vault path moved from `iCloud Drive/Recipes/` to the Obsidian iCloud container (`~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Recipes/`) after discovering Obsidian iOS only detects vaults stored in the app's own iCloud container, not in a generic `iCloud Drive/Obsidian/` folder. Symlink at `~/Projects/recipes` updated to point to new location. Git, GitHub repo, Sunday Action all unaffected (cloud doesn't care about local paths). One interim attempt put the vault in `iCloud Drive/Obsidian/` (a generic folder named "Obsidian" in iCloud Drive root); this doesn't work because iOS expects the Obsidian-app iCloud container specifically — distinct from any user-created folder of the same name.
