@@ -13,16 +13,16 @@ tags: [weeknight, asian-flavors, thai-flavors, quick]
 diet_tags: [high-protein, dairy-free]
 key_ingredients: [flank-steak, rice-noodles, thai-basil, bell-peppers, garlic]
 nutrition:
-  calories: 585
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 620
+  cholesterol_mg: 80
+  saturated_fat_g: 11
+  total_fat_g: 30
+  sodium_mg: 1700
+  carbs_g: 50
+  sugar_g: 8
+  fiber_g: 4
+  protein_g: 35
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

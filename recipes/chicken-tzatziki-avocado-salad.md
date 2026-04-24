@@ -13,16 +13,16 @@ tags: [weeknight, salad-as-meal, mediterranean, greek, leftover-friendly]
 diet_tags: [gluten-free, high-protein]
 key_ingredients: [chicken, kale, romaine, feta, avocado, tzatziki]
 nutrition:
-  calories: 692
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 670
+  cholesterol_mg: 95
+  saturated_fat_g: 11
+  total_fat_g: 47
+  sodium_mg: 850
+  carbs_g: 18
+  sugar_g: 6
+  fiber_g: 6
+  protein_g: 40
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

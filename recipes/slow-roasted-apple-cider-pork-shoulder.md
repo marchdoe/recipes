@@ -12,7 +12,17 @@ difficulty: medium
 tags: [weekend, sunday-cook, make-ahead, brine-overnight, autumn-flavors]
 diet_tags: [gluten-free, dairy-free]
 key_ingredients: [pork-shoulder, apple-cider, apples, onion, rosemary, sage]
-nutrition: {}
+nutrition:
+  calories: 480
+  cholesterol_mg: 140
+  saturated_fat_g: 11
+  total_fat_g: 30
+  sodium_mg: 900
+  carbs_g: 14
+  sugar_g: 10
+  fiber_g: 1
+  protein_g: 35
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

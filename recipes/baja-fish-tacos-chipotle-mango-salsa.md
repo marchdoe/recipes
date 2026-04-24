@@ -13,16 +13,16 @@ tags: [weeknight, fish-night, mexican-flavors, summer]
 diet_tags: [high-protein]
 key_ingredients: [white-fish, mango, avocado, tortillas, tomatillos]
 nutrition:
-  calories: 739
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 800
+  cholesterol_mg: 95
+  saturated_fat_g: 10
+  total_fat_g: 40
+  sodium_mg: 700
+  carbs_g: 75
+  sugar_g: 10
+  fiber_g: 6
+  protein_g: 35
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

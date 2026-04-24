@@ -13,16 +13,16 @@ tags: [weeknight, one-pot, leftover-friendly, comfort-food, crockpot-option]
 diet_tags: [high-protein]
 key_ingredients: [chicken, broccoli, egg-noodles, pesto, spinach]
 nutrition:
-  calories: 399
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 380
+  cholesterol_mg: 50
+  saturated_fat_g: 8
+  total_fat_g: 18
+  sodium_mg: 750
+  carbs_g: 28
+  sugar_g: 5
+  fiber_g: 4
+  protein_g: 25
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

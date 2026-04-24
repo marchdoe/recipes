@@ -13,16 +13,16 @@ tags: [weeknight, one-pot, leftover-friendly, comfort-food, mexican-flavors]
 diet_tags: [gluten-free, high-protein, high-fiber]
 key_ingredients: [chicken-breast, beans, tomatoes, peppers, cheddar]
 nutrition:
-  calories: 434
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 401
+  cholesterol_mg: 89
+  saturated_fat_g: 10
+  total_fat_g: 18
+  sodium_mg: 725
+  carbs_g: 25
+  sugar_g: 10
+  fiber_g: 7
+  protein_g: 40
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

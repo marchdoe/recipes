@@ -13,16 +13,16 @@ tags: [weeknight, oven-baked, asian-flavors, kid-friendly]
 diet_tags: [high-protein]
 key_ingredients: [chicken, hoisin, soy-sauce, ginger, sesame]
 nutrition:
-  calories: 485
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 460
+  cholesterol_mg: 90
+  saturated_fat_g: 2.5
+  total_fat_g: 8
+  sodium_mg: 1100
+  carbs_g: 50
+  sugar_g: 18
+  fiber_g: 1
+  protein_g: 32
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

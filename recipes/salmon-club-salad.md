@@ -13,16 +13,16 @@ tags: [weeknight, fish-night, sheet-pan, summer, salad-as-meal]
 diet_tags: [high-protein]
 key_ingredients: [salmon, arugula, romaine, bacon, avocado, gouda]
 nutrition:
-  calories: 777
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 800
+  cholesterol_mg: 110
+  saturated_fat_g: 13
+  total_fat_g: 55
+  sodium_mg: 700
+  carbs_g: 22
+  sugar_g: 4
+  fiber_g: 4
+  protein_g: 42
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0

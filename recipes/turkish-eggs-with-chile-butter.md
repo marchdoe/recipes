@@ -13,16 +13,16 @@ tags: [brunch, breakfast-for-dinner, mediterranean, weekend]
 diet_tags: [vegetarian, gluten-free, high-protein]
 key_ingredients: [eggs, feta, spinach, avocado, herbs]
 nutrition:
-  calories: 528
-  cholesterol_mg:
-  saturated_fat_g:
-  total_fat_g:
-  sodium_mg:
-  carbs_g:
-  sugar_g:
-  fiber_g:
-  protein_g:
-nutrition_estimated: false
+  calories: 540
+  cholesterol_mg: 280
+  saturated_fat_g: 16
+  total_fat_g: 40
+  sodium_mg: 1100
+  carbs_g: 12
+  sugar_g: 4
+  fiber_g: 5
+  protein_g: 22
+nutrition_estimated: true
 rating:
 last_cooked:
 times_cooked: 0
