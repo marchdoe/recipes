@@ -4,6 +4,9 @@
 .obsidian/cache
 .obsidian/graph.json
 
+# Per-device plugin settings
+.obsidian/plugins/obsidian-git/data.json
+
 # macOS
 .DS_Store
 *.icloud
