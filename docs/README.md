@@ -89,7 +89,8 @@ One-time setup. Takes about 5 minutes including initial sync.
 
 2. **Open the existing iCloud vault** (do NOT "Create new vault"):
    - On the first screen, tap **"Open existing vault"** or **"Add iCloud vault"** (wording varies by version)
-   - The "Recipes" vault should appear under iCloud Drive vaults (Obsidian auto-detects vaults stored in iCloud)
+   - The "Recipes" vault should appear under iCloud Drive vaults
+   - **Important:** Obsidian iOS only detects vaults stored at `iCloud Drive/Obsidian/<vault-name>/` — our vault lives at `iCloud Drive/Obsidian/Recipes/`, which is the exact path the app expects, so it should appear automatically
    - Tap **Recipes**
 
 3. **Wait for files to download:**
