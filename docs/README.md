@@ -38,6 +38,7 @@ Doug must have Obsidian open at some point for the auto-pull to fire. iCloud han
 |---|---|
 | `recipes/` | One `.md` per recipe; frontmatter holds metadata + nutrition; body holds ingredients/directions/notes |
 | `recipes-inbox/` | Web Clipper drops clipped pages here; `"Process the recipe inbox"` normalizes them into `recipes/` |
+| `recipes-needs-review/` | Inbox files that couldn't be auto-processed (incomplete clip, site blocks re-fetch, etc.) — Doug fixes manually or deletes |
 | `plans/YYYY-MM-DD.md` | Weekly menu (date is the Monday of that week); written by the Sunday Action |
 | `lists/YYYY-MM-DD.md` | Paired grocery list; written by the Sunday Action |
 | `preferences.md` | Household profile: Doug's + Alisa's dietary targets, weekly rhythm, picker rules, recent feedback |

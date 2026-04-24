@@ -44,12 +44,28 @@ For each `.md` file in `recipes-inbox/` (excluding `.gitkeep`):
    ```
 9. **Commit** in one batch: `Add N recipes from inbox` — auto-commit per the per-action policy (recipe ingestion is auto-commit). Auto-push.
 
+## When a clip can't be cleanly processed
+
+If processing fails for any reason — re-fetch returns 403/404, the clip is missing key sections (e.g., no ingredients list and re-fetch failed too), the source URL points to a non-recipe page, or the content is otherwise unusable — **move the file to `recipes-needs-review/`** instead of deleting it or trying to write a partial recipe.
+
+```bash
+mv "recipes-inbox/<filename>" "recipes-needs-review/<filename>"
+```
+
+The failed file should keep its original frontmatter (source URL, title, clipped date) so Doug can later either:
+- Manually fix the recipe by visiting the source URL and filling in missing fields
+- Delete it if the recipe wasn't worth keeping
+- Re-trigger processing if the underlying issue (e.g., site temporarily down) was transient
+
+Include the file in the summary table with a `⚠ moved to needs-review` status and a one-sentence reason.
+
 ## What NOT to do
 
 - Don't fabricate nutrition data
-- Don't process files without a `source:` URL — leave them for Doug to inspect
-- Don't delete inbox files that failed to process — leave them so Doug can see what went wrong
-- Don't write a recipe if the page content seems wrong (e.g., the URL points to a navigation page, not a recipe). Skip and tell Doug.
+- Don't fabricate ingredient quantities — if quantities are missing from the clip and the source can't be re-fetched, move to `recipes-needs-review/` rather than guessing
+- Don't process files without a `source:` URL — move them to `recipes-needs-review/` so Doug can inspect
+- Don't delete inbox files that failed to process — move them to `recipes-needs-review/` instead
+- Don't write a recipe if the page content seems wrong (e.g., the URL points to a navigation page, not a recipe). Move to needs-review and tell Doug.
 - Don't combine inbox processing with other vault operations in the same commit — keep the history clean
 
 ## When to run
