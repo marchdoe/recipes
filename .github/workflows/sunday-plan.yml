@@ -1,0 +1,61 @@
+name: Sunday meal plan
+
+on:
+  schedule:
+    # 7:00 AM US Pacific = 14:00 UTC (PST) or 15:00 UTC (PDT).
+    # Cron is in UTC. Pick 14:00 UTC; spec accepts ±1hr drift across DST.
+    - cron: '0 14 * * 0'
+  workflow_dispatch:  # allow manual trigger from GitHub UI
+
+jobs:
+  plan-the-week:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write  # so the action can commit + push back
+
+    steps:
+      - name: Checkout vault
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 50  # need recent plans/ history for no-repeat rule
+
+      - name: Set up Node (for Claude Code CLI)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Configure git identity
+        run: |
+          git config user.name "Sunday Planner Bot"
+          git config user.email "actions@github.com"
+
+      - name: Run the Sunday agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude \
+            --print \
+            --model claude-sonnet-4-6 \
+            --append-system-prompt "$(cat system-prompt.md)" \
+            --max-turns 30 \
+            --permission-mode acceptEdits \
+            "Run the Sunday meal planning task as described in your system prompt. Today is $(date -u +%Y-%m-%d). The upcoming week starts $(date -d 'next monday' +%Y-%m-%d)."
+
+      - name: Commit and push results
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git add plans/ lists/
+            git commit -m "Sunday plan: week of $(date -d 'next monday' +%Y-%m-%d)"
+            git push
+          else
+            echo "No changes produced — agent may have failed or produced empty plan."
+            exit 1
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "Sunday plan generation failed; see job logs."
