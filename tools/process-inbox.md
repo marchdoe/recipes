@@ -1,0 +1,64 @@
+# Process recipe inbox
+
+Instructions Claude follows when Doug says *"Process the recipe inbox"* in an interactive Claude Code session.
+
+## What's in `recipes-inbox/`
+
+Files clipped from the web by the Obsidian Web Clipper extension. Each clipped file:
+- Has a `source` URL in its frontmatter (this is the critical field — never lose it)
+- Contains the raw clipped page content as Markdown in the body
+- May include a `title`, `clipped` date, and other Web-Clipper-default fields
+- Has a filename derived from the page title (probably not yet in our recipe-slug convention)
+
+## Your task per inbox file
+
+For each `.md` file in `recipes-inbox/` (excluding `.gitkeep`):
+
+1. **Read the file.** Find the `source:` URL in frontmatter. If missing, skip the file and tell Doug; we don't trust an inbox file without provenance.
+2. **Re-fetch the source URL** via WebFetch. The Web Clipper sometimes captures incomplete content, sidebar junk, or nav menus. A fresh fetch with explicit "extract the recipe" prompting is more reliable than the raw clip.
+3. **Extract the recipe** in the same way you would for a normal "add this recipe" flow:
+   - Title (clean, human-readable)
+   - Servings, prep/cook/total time
+   - Cuisine, category, meal_type, difficulty (best-guess from content)
+   - Free-form `tags` and controlled `diet_tags` (`heart-healthy`, `low-sodium`, `low-cholesterol`, `vegetarian`, `vegan`, `gluten-free`, `dairy-free`, `high-protein`, `high-fiber`, `kid-friendly`)
+   - `key_ingredients` (3–7 kebab-case slugs)
+   - Full ingredients list in `## Ingredients` body section
+   - Step-by-step `## Directions`
+   - `## Notes` section with heart-health caveats relevant to Doug's targets (cholesterol <200mg/day, sat fat <10g/day, sodium <2000mg/day)
+4. **Nutrition handling:**
+   - If the source provides nutrition data, populate the `nutrition:` block with real values, leave `nutrition_estimated` unset (or `false`)
+   - If the source provides ONLY calories (typical for many food blogs), populate just `calories:` and leave the rest blank
+   - **Do NOT estimate nutrition automatically.** Doug will run the estimate-nutrition flow separately for batches he wants estimated. Inbox processing is just normalization.
+5. **Filename:** Convert the title to kebab-case (e.g., "Sticky Asian BBQ Boneless Oven Baked Chicken Wings" → `sticky-asian-bbq-baked-chicken-wings.md`). Drop unnecessary words for length.
+6. **Write the normalized file** to `recipes/<slug>.md` using the schema from `docs/superpowers/specs/2026-04-24-recipe-vault-design.md` Section 5.
+7. **Delete the inbox file** once the recipe is successfully written.
+8. **Show Doug a summary table** of what was processed:
+   ```
+   Processed 3 inbox items:
+     ✓ recipes-inbox/Half Baked Harvest - Salmon Bowls.md
+       → recipes/spicy-thai-basil-salmon-bowls.md
+     ✓ recipes-inbox/NYT Cooking - Lentil Soup.md
+       → recipes/red-lentil-soup-with-lemon.md
+     ⚠ recipes-inbox/some-broken-clip.md
+       → skipped: source URL returned 404; left in inbox for review
+   ```
+9. **Commit** in one batch: `Add N recipes from inbox` — auto-commit per the per-action policy (recipe ingestion is auto-commit). Auto-push.
+
+## What NOT to do
+
+- Don't fabricate nutrition data
+- Don't process files without a `source:` URL — leave them for Doug to inspect
+- Don't delete inbox files that failed to process — leave them so Doug can see what went wrong
+- Don't write a recipe if the page content seems wrong (e.g., the URL points to a navigation page, not a recipe). Skip and tell Doug.
+- Don't combine inbox processing with other vault operations in the same commit — keep the history clean
+
+## When to run
+
+Doug runs this whenever there's stuff in `recipes-inbox/`. Could be once a day, once a week, or just before a Sunday plan needs more variety. There's no schedule.
+
+## Inspection command
+
+To see what's in the inbox without processing:
+```
+ls recipes-inbox/
+```

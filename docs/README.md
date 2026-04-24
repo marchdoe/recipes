@@ -37,6 +37,7 @@ Doug must have Obsidian open at some point for the auto-pull to fire. iCloud han
 | Folder/File | What's in it |
 |---|---|
 | `recipes/` | One `.md` per recipe; frontmatter holds metadata + nutrition; body holds ingredients/directions/notes |
+| `recipes-inbox/` | Web Clipper drops clipped pages here; `"Process the recipe inbox"` normalizes them into `recipes/` |
 | `plans/YYYY-MM-DD.md` | Weekly menu (date is the Monday of that week); written by the Sunday Action |
 | `lists/YYYY-MM-DD.md` | Paired grocery list; written by the Sunday Action |
 | `preferences.md` | Household profile: Doug's + Alisa's dietary targets, weekly rhythm, picker rules, recent feedback |
@@ -53,6 +54,7 @@ All of these happen by opening Claude Code in `~/Projects/recipes/` and chatting
 | What you want | What you say |
 |---|---|
 | Add a new recipe from a URL | *"Add this recipe: <url>"* |
+| Process recipes you clipped via the browser extension | *"Process the recipe inbox"* (see "One-click clipping" below) |
 | Mark a recipe as cooked tonight | *"We made the chicken thighs tonight"* |
 | Log feedback on a recent meal | *"The lentil soup was bland; we won't make it again"* |
 | Swap a meal in this week's plan | *"Swap Wednesday for something with chicken thighs"* |
@@ -107,6 +109,24 @@ If something goes wrong (vault not appearing, files not downloading, formatting 
 - Wait longer — first sync is genuinely slow on cellular
 - Force-quit Obsidian and reopen
 - Check that the iPhone is signed into the same iCloud account that owns the Recipes folder
+
+## One-click clipping (browser extension)
+
+For recipes you find while browsing, instead of copying URLs to Claude Code, you can use the **Obsidian Web Clipper** extension. It's the official browser extension from Obsidian.
+
+**The flow:**
+1. While browsing, see a recipe you want → click the Web Clipper extension icon → it saves the page to `recipes-inbox/<title>.md` in the vault
+2. Periodically (whenever you want, no schedule), open Claude Code in the vault and say: *"Process the recipe inbox"*
+3. Claude reads each inbox file, re-fetches the source URL, normalizes to the recipe schema (with cuisine, key_ingredients, diet_tags, etc.), writes to `recipes/`, deletes the inbox entry, commits
+
+**Where to install:**
+- **Mac (Chrome/Brave/Edge/Arc):** [Chrome Web Store](https://chromewebstore.google.com/detail/obsidian-web-clipper/cnjifjpddelmedmihgijeibhnjfabmlf)
+- **Mac (Safari):** [Mac App Store](https://apps.apple.com/us/app/obsidian-web-clipper/id6720708363)
+- **iPhone (Safari):** same App Store listing — works as both an app and a Safari extension
+
+**How Alisa contributes recipes:** she installs Web Clipper on her iPhone Safari, taps the share/extension button on any recipe she likes, the clip lands in the vault's inbox via iCloud sync. Doug runs *"process the recipe inbox"* later to normalize and import them.
+
+**Rule of thumb:** clip when you're browsing, paste-URL-to-Claude-Code when you've already got the URL in hand. Either flow eventually produces the same normalized recipe in `recipes/`.
 
 ## What Alisa can do
 
