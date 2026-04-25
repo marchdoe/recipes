@@ -130,6 +130,7 @@ Meal Plan plugin explicitly **excluded** — its functionality is replaced by th
 ---
 title: Chicken Thighs with Lemon and Rosemary
 source: https://nytcooking.com/some-url
+image: _images/<slug>.<ext>   # Optional: relative to recipes/, omit if no image. See 2026-04-25-recipe-images-design.md.
 servings: 4
 cuisine: mediterranean
 category: dinner
@@ -191,7 +192,9 @@ Recipe View plugin renders these conventionally.
 
 ### 5.4 Image policy
 
-No image files in the vault. The `source` URL field is the canonical image reference — open the source link to see the original. Revisit if needed in Phase 2.
+**Superseded 2026-04-25** — see `docs/superpowers/specs/2026-04-25-recipe-images-design.md`.
+
+Each recipe now has a hero image stored in-vault at `recipes/_images/<slug>.<ext>`. Images are downloaded from the source page's OG image at inbox-processing time (with the inbox file's embedded image URL as a fallback). The `source:` URL remains the canonical link to the publisher; the local image is a cached snapshot for offline viewing in Obsidian.
 
 ## 6. Preferences schema (`preferences.md`)
 
