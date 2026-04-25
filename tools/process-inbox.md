@@ -10,6 +10,8 @@ Files clipped from the web by the Obsidian Web Clipper extension. Each clipped f
 - May include a `title`, `clipped` date, and other Web-Clipper-default fields
 - Has a filename derived from the page title (probably not yet in our recipe-slug convention)
 
+Inbox files are not committed to git — they live on disk only until they're processed and consumed (then deleted from the inbox; the normalized recipe is what gets committed). Only `.gitkeep` is tracked, so the empty directory persists across clones.
+
 ## Your task per inbox file
 
 For each `.md` file in `recipes-inbox/` (excluding `.gitkeep`):

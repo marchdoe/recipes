@@ -5,6 +5,7 @@ A meal-planning Obsidian vault for Doug and Alisa. Recipes live in `recipes/`; e
 ## Structure
 
 - `recipes/` — one Markdown file per recipe; frontmatter holds metadata + nutrition; body holds ingredients/directions/notes
+- `recipes/_images/` — hero images, one per recipe, matched by slug (downloaded automatically when recipes are imported)
 - `plans/YYYY-MM-DD.md` — weekly menu (date is the Monday of that week)
 - `lists/YYYY-MM-DD.md` — paired grocery list
 - `preferences.md` — household profile, dietary targets, weekly rhythm, picker rules, recent feedback
