@@ -15,14 +15,14 @@ diet_tags: [gluten-free, high-protein]
 key_ingredients: [chicken-breast, corn, sour-cream, feta, lime, chili-powder]
 nutrition:
   calories: 330
-  protein_g: 29
-  total_fat_g: 11
-  carbs_g: 33
   cholesterol_mg: 85
   saturated_fat_g: 3
+  total_fat_g: 11
   sodium_mg: 388
+  carbs_g: 33
   sugar_g: 2
   fiber_g: 5
+  protein_g: 29
 nutrition_estimated: false
 rating:
 last_cooked:
