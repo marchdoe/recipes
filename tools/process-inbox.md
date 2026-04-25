@@ -25,24 +25,35 @@ For each `.md` file in `recipes-inbox/` (excluding `.gitkeep`):
    - Full ingredients list in `## Ingredients` body section
    - Step-by-step `## Directions`
    - `## Notes` section with heart-health caveats relevant to Doug's targets (cholesterol <200mg/day, sat fat <10g/day, sodium <2000mg/day)
-4. **Nutrition handling:**
+4. **Image handling:**
+   - Try to extract the source page's OG image first: fetch the source URL and look for `<meta property="og:image" content="...">`. Download it to `recipes/_images/<slug>.<ext>` (preserve the original extension; fall back to Content-Type header if URL has none).
+   - If OG extraction fails, fall back to the first Markdown image URL embedded in the inbox file body.
+   - Always send a `Referer: <source-page-URL>` header on the image request — some CDNs reject hotlinks without it.
+   - If both OG and inbox-URL fail, skip the image: write the recipe without an `image:` frontmatter field and without the embed line. Don't write a placeholder.
+   - On success, the recipe gets two additions: an `image: _images/<slug>.<ext>` line in frontmatter, and `![[_images/<slug>.<ext>|500]]` as the very first body line (one blank line above and below it, before any `##` heading).
+   - See `docs/superpowers/specs/2026-04-25-recipe-images-design.md` §3.3 for the exact procedure and `docs/superpowers/plans/2026-04-25-recipe-images-implementation.md` for the bash commands.
+5. **Nutrition handling:**
    - If the source provides nutrition data, populate the `nutrition:` block with real values, leave `nutrition_estimated` unset (or `false`)
    - If the source provides ONLY calories (typical for many food blogs), populate just `calories:` and leave the rest blank
    - **Do NOT estimate nutrition automatically.** Doug will run the estimate-nutrition flow separately for batches he wants estimated. Inbox processing is just normalization.
-5. **Filename:** Convert the title to kebab-case (e.g., "Sticky Asian BBQ Boneless Oven Baked Chicken Wings" → `sticky-asian-bbq-baked-chicken-wings.md`). Drop unnecessary words for length.
-6. **Write the normalized file** to `recipes/<slug>.md` using the schema from `docs/superpowers/specs/2026-04-24-recipe-vault-design.md` Section 5.
-7. **Delete the inbox file** once the recipe is successfully written.
-8. **Show Doug a summary table** of what was processed:
+6. **Filename:** Convert the title to kebab-case (e.g., "Sticky Asian BBQ Boneless Oven Baked Chicken Wings" → `sticky-asian-bbq-baked-chicken-wings.md`). Drop unnecessary words for length.
+7. **Write the normalized file** to `recipes/<slug>.md` using the schema from `docs/superpowers/specs/2026-04-24-recipe-vault-design.md` Section 5.
+8. **Delete the inbox file** once the recipe is successfully written.
+9. **Show Doug a summary table** of what was processed:
    ```
    Processed 3 inbox items:
      ✓ recipes-inbox/Half Baked Harvest - Salmon Bowls.md
        → recipes/spicy-thai-basil-salmon-bowls.md
      ✓ recipes-inbox/NYT Cooking - Lentil Soup.md
        → recipes/red-lentil-soup-with-lemon.md
+     ✓ recipes-inbox/Recipe With Image.md
+       → recipes/recipe-with-image.md (+ image)
+     ⚠ recipes-inbox/Recipe Without OG Image.md
+       → recipes/recipe-without-og.md (no image — source page had no OG tag)
      ⚠ recipes-inbox/some-broken-clip.md
        → skipped: source URL returned 404; left in inbox for review
    ```
-9. **Commit** in one batch: `Add N recipes from inbox` — auto-commit per the per-action policy (recipe ingestion is auto-commit). Auto-push.
+10. **Commit** in one batch: `Add N recipes from inbox` — auto-commit per the per-action policy (recipe ingestion is auto-commit). Auto-push.
 
 ## When a clip can't be cleanly processed
 
@@ -67,6 +78,7 @@ Include the file in the summary table with a `⚠ moved to needs-review` status 
 - Don't delete inbox files that failed to process — move them to `recipes-needs-review/` instead
 - Don't write a recipe if the page content seems wrong (e.g., the URL points to a navigation page, not a recipe). Move to needs-review and tell Doug.
 - Don't combine inbox processing with other vault operations in the same commit — keep the history clean
+- Don't generate or fabricate images. If neither OG nor the inbox URL produces a usable image, the recipe is written without one — silent degradation, no placeholder.
 
 ## When to run
 
