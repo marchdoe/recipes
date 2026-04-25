@@ -26,6 +26,7 @@ For each `.md` file in `recipes-inbox/` (excluding `.gitkeep`):
    - Step-by-step `## Directions`
    - `## Notes` section with heart-health caveats relevant to Doug's targets (cholesterol <200mg/day, sat fat <10g/day, sodium <2000mg/day)
 4. **Image handling:**
+   - Ensure `recipes/_images/` exists before downloading: `mkdir -p recipes/_images`
    - Try to extract the source page's OG image first: fetch the source URL and look for `<meta property="og:image" content="...">`. Download it to `recipes/_images/<slug>.<ext>` (preserve the original extension; fall back to Content-Type header if URL has none).
    - If OG extraction fails, fall back to the first Markdown image URL embedded in the inbox file body.
    - Always send a `Referer: <source-page-URL>` header on the image request — some CDNs reject hotlinks without it.
@@ -48,7 +49,7 @@ For each `.md` file in `recipes-inbox/` (excluding `.gitkeep`):
        → recipes/red-lentil-soup-with-lemon.md
      ✓ recipes-inbox/Recipe With Image.md
        → recipes/recipe-with-image.md (+ image)
-     ⚠ recipes-inbox/Recipe Without OG Image.md
+     ✓ recipes-inbox/Recipe Without OG Image.md
        → recipes/recipe-without-og.md (no image — source page had no OG tag)
      ⚠ recipes-inbox/some-broken-clip.md
        → skipped: source URL returned 404; left in inbox for review
