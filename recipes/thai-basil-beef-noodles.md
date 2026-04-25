@@ -1,6 +1,7 @@
 ---
 title: 30 Minute Thai Basil Beef Noodles
 source: https://www.halfbakedharvest.com/basil-beef-noodles/
+image: _images/thai-basil-beef-noodles.jpg
 servings: 4
 cuisine: thai
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/thai-basil-beef-noodles.jpg|500]]
 
 ## Ingredients
 

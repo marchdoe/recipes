@@ -1,6 +1,7 @@
 ---
 title: Chicken Tzatziki Avocado Salad
 source: https://www.halfbakedharvest.com/chicken-tzatziki-avocado-salad/
+image: _images/chicken-tzatziki-avocado-salad.jpg
 servings: 6
 cuisine: greek
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/chicken-tzatziki-avocado-salad.jpg|500]]
 
 ## Ingredients
 

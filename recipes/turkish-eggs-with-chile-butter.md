@@ -1,6 +1,7 @@
 ---
 title: Turkish Eggs with Chile Butter and Whipped Feta
 source: https://www.halfbakedharvest.com/turkish-eggs/
+image: _images/turkish-eggs-with-chile-butter.jpg
 servings: 3
 cuisine: turkish
 category: breakfast
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/turkish-eggs-with-chile-butter.jpg|500]]
 
 ## Ingredients
 

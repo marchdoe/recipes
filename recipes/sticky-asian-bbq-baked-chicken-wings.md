@@ -1,6 +1,7 @@
 ---
 title: Sticky Asian BBQ Boneless Oven Baked Chicken Wings
 source: https://www.halfbakedharvest.com/sticky-asian-bbq-boneless-oven-baked-chicken-wings/
+image: _images/sticky-asian-bbq-baked-chicken-wings.jpg
 servings: 4
 cuisine: asian
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/sticky-asian-bbq-baked-chicken-wings.jpg|500]]
 
 ## Ingredients
 

@@ -1,6 +1,7 @@
 ---
 title: Lemony Pesto Chicken Noodle Soup
 source: https://www.halfbakedharvest.com/pesto-chicken-noodle-soup/
+image: _images/lemony-pesto-chicken-noodle-soup.jpg
 servings: 6
 cuisine: italian
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/lemony-pesto-chicken-noodle-soup.jpg|500]]
 
 ## Ingredients
 

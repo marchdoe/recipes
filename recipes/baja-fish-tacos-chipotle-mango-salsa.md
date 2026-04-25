@@ -1,6 +1,7 @@
 ---
 title: Baja Fish Tacos with Chipotle Mango Salsa
 source: https://www.halfbakedharvest.com/baja-fish-tacos-chipotle-mango-salsa/
+image: _images/baja-fish-tacos-chipotle-mango-salsa.jpg
 servings: 4
 cuisine: mexican
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/baja-fish-tacos-chipotle-mango-salsa.jpg|500]]
 
 ## Ingredients
 
