@@ -1,6 +1,7 @@
 ---
 title: Southern Streak o' Lean
 source: https://www.lanascooking.com/streak-o-lean/
+image: _images/streak-o-lean.jpg
 servings: 6
 cuisine: southern
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/streak-o-lean.jpg|500]]
 
 ## Ingredients
 

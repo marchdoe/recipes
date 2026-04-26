@@ -1,6 +1,7 @@
 ---
 title: Slow Roasted Apple Cider Pork Shoulder
 source: https://thenoshery.com/apple-cider-pork/
+image: _images/slow-roasted-apple-cider-pork-shoulder.jpg
 servings: 10
 cuisine: american
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/slow-roasted-apple-cider-pork-shoulder.jpg|500]]
 
 ## Ingredients
 

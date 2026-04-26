@@ -1,6 +1,7 @@
 ---
 title: Salmon Club Salad
 source: https://www.halfbakedharvest.com/salmon-club-salad/
+image: _images/salmon-club-salad.jpg
 servings: 6
 cuisine: american
 category: dinner
@@ -28,6 +29,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/salmon-club-salad.jpg|500]]
 
 ## Ingredients
 

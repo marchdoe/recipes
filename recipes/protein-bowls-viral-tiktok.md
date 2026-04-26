@@ -1,6 +1,7 @@
 ---
 title: Protein Bowls (Viral TikTok Recipe)
 source: https://www.spoonforkbacon.com/protein-bowls-viral-tiktok-recipe/
+image: _images/protein-bowls-viral-tiktok.jpg
 servings: 2
 cuisine: american
 category: dinner
@@ -27,6 +28,8 @@ last_cooked:
 times_cooked: 0
 added: 2026-04-24
 ---
+
+![[_images/protein-bowls-viral-tiktok.jpg|500]]
 
 ## Ingredients
 
