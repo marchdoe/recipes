@@ -24,19 +24,20 @@ The same Claude Code can also be opened locally on Doug's Mac at any time to imp
 [Sunday Action runs in the cloud]
       ↓ commits + pushes
 [GitHub remote]
-      ↓ Doug opens Obsidian → Obsidian Git auto-pulls within 30 sec
+      ↓ Doug pulls manually (Cmd+P → "Obsidian Git: Pull", or `git pull` in terminal)
 [Doug's Mac local folder = iCloud Recipes]
       ↓ iCloud Drive auto-syncs (a few minutes)
 [Alisa's iPhone via Obsidian mobile]
 ```
 
-Doug must have Obsidian open at some point for the auto-pull to fire. iCloud handles the rest automatically once the files land on the Mac.
+Doug pulls when he wants the latest — typically once Sunday morning to get that week's plan. iCloud propagates to the phone automatically afterwards. The Obsidian Git plugin used to auto-pull on a 30-second timer, but that was disabled on 2026-04-27 because it caused authentication errors on the iPhone (which has no git credentials). See `SETUP.md` §5 for the full story.
 
 ## Folder structure
 
 | Folder/File | What's in it |
 |---|---|
 | `recipes/` | One `.md` per recipe; frontmatter holds metadata + nutrition; body holds ingredients/directions/notes |
+| `recipes/_images/` | Hero images, one per recipe (matched by slug). Downloaded automatically when recipes are imported. |
 | `recipes-inbox/` | Web Clipper drops clipped pages here; `"Process the recipe inbox"` normalizes them into `recipes/` |
 | `recipes-needs-review/` | Inbox files that couldn't be auto-processed (incomplete clip, site blocks re-fetch, etc.) — Doug fixes manually or deletes |
 | `plans/YYYY-MM-DD.md` | Weekly menu (date is the Monday of that week); written by the Sunday Action |
@@ -70,13 +71,12 @@ The agent follows a per-action policy: low-stakes things (recipe imports, feedba
 ## The Sunday weekly flow
 
 1. **Sunday morning** — GitHub Action runs at 7:00 AM Pacific, takes ~5 minutes
-2. **Eventually you open Obsidian** — sometime that morning is fine
-3. **Within 30 seconds of opening** — Obsidian Git auto-pulls the new plan and list
-4. **iCloud syncs to Alisa's phone** — within minutes
-5. **At the grocery store** — Alisa opens Obsidian, taps `lists/YYYY-MM-DD.md` for this week's grocery list with checkboxes
-6. **At dinner time** — open `plans/YYYY-MM-DD.md`, tap the linked recipe for ingredients and directions
+2. **Doug pulls when he sits down with Obsidian** — Cmd+P → `Obsidian Git: Pull`, or `git pull` in terminal
+3. **iCloud syncs to Alisa's phone** — within minutes of the Mac pulling
+4. **At the grocery store** — Alisa opens Obsidian, taps `lists/YYYY-MM-DD.md` for this week's grocery list with checkboxes
+5. **At dinner time** — open `plans/YYYY-MM-DD.md`, tap the linked recipe for ingredients and directions
 
-If you don't open Obsidian Sunday morning, the new plan still appears the next time you do open it. As long as that's before the grocery run, you're fine.
+The pull is manual now (was auto-pull until 2026-04-27 — see `SETUP.md` §5). One keystroke or one `git pull`. If you forget, the plan still appears the next time you do pull — as long as that's before the grocery run, you're fine.
 
 ## Setting up Obsidian on Alisa's iPhone
 
@@ -178,8 +178,10 @@ Things deliberately not built yet but available to add later:
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| Sunday plan didn't appear in Obsidian | Obsidian Git didn't pull | Cmd+P → "Git: Pull" in Obsidian, or close & reopen Obsidian |
-| Alisa's phone not showing new files | iCloud sync lag | Pull-to-refresh in Obsidian; check WiFi; try opening files individually |
+| Sunday plan didn't appear in Obsidian | Manual pull hasn't run yet | Cmd+P → `Obsidian Git: Pull`, or `git pull` in terminal |
+| Alisa's phone not showing new files | iCloud sync lag (only fires after Mac pulls) | Make sure Mac has pulled; pull-to-refresh in Obsidian; check WiFi |
+| `Authentication failed` toast on iPhone Obsidian | Obsidian Git plugin trying to fetch | Should be impossible after 2026-04-27 config; if it returns, see `SETUP.md` §5 |
+| `Aborted, branch not set` error | Plugin in stale state | `rm .obsidian/plugins/obsidian-git/data.json` and restart Obsidian (see `SETUP.md` §12) |
 | Sunday Action failed | API key issue, model error, etc. | Check https://github.com/marchdoe/recipes/actions for the failed run logs |
 | Recipe imported with wrong cuisine/category | Claude best-guess was off | Open the recipe `.md`, edit the frontmatter, commit |
 | Plan picked something that violates preferences | System prompt needs tightening | Edit `system-prompt.md` to add an explicit rule for that case |
@@ -188,6 +190,8 @@ Things deliberately not built yet but available to add later:
 
 ## Where to learn more
 
+- **Setup & configuration record:** `docs/SETUP.md` — what's installed where, how plugins are configured, why each decision was made, recovery cheat sheet
 - **Design spec:** `docs/superpowers/specs/2026-04-24-recipe-vault-design.md` — full architectural reasoning, all decisions made and why
-- **Implementation plan:** `docs/superpowers/plans/2026-04-24-recipe-vault-implementation.md` — the step-by-step build that produced this vault
+- **Image system design:** `docs/superpowers/specs/2026-04-25-recipe-images-design.md` — recipe-image storage and OG-fetching policy
+- **Implementation plans:** `docs/superpowers/plans/` — step-by-step build records
 - **Vault root README:** `~/Projects/recipes/README.md` — short pointer to this guide

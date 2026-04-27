@@ -22,4 +22,10 @@ A meal-planning Obsidian vault for Doug and Alisa. Recipes live in `recipes/`; e
 - **Log feedback:** "the lentil soup was bland; we won't make it again"
 - **Browse recipes on phone:** open Obsidian mobile (vault is in iCloud Drive)
 
-See `docs/superpowers/specs/2026-04-24-recipe-vault-design.md` for the full design.
+## Where things are documented
+
+- **`docs/README.md`** — day-to-day user guide: common tasks, the Sunday flow, troubleshooting
+- **`docs/SETUP.md`** — technical setup record: what's installed where, how plugins are configured, why each decision was made, recovery cheat sheet (start here if setting up a fresh device)
+- **`docs/TODO.md`** — outstanding work and deferred ideas
+- **`docs/superpowers/specs/`** — design specs (the architectural why)
+- **`docs/superpowers/plans/`** — implementation plans (the step-by-step how)
