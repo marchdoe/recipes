@@ -1,6 +1,6 @@
 [
   "dataview",
-  "obsidian-git",
   "recipe-view",
-  "templater-obsidian"
+  "templater-obsidian",
+  "obsidian-git"
 ]
